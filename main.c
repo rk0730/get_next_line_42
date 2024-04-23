@@ -28,42 +28,34 @@
 // 	return (0);
 // }
 
+# define TEST_BF 5
+
+void	getnext(int fd)
+{
+	static char	*box;
+	//勝手にヌル埋めはしてくれないっぽい
+	printf("box[0] %c\n", box[0]);
+	printf("box[5] %c\n", box[4]);
+	read(fd, &box[fd * TEST_BF], TEST_BF);
+	printf("result %s\n", &box[fd * TEST_BF]);
+}
+
+
 int	main(void)
 {
-	// int	fd1 = open("alpha.txt", O_RDONLY);
-	// int	fd2 = open("alpha2.txt", O_RDONLY);
-	// int	fd3 = open("num.txt", O_RDONLY);
-	// char	*str = calloc(10, 1);
+	int	fd1 = open("alpha.txt", O_RDONLY);
+	int	fd2 = open("alpha2.txt", O_RDONLY);
+	int	fd3 = open("num.txt", O_RDONLY);
 
-	// ssize_t result = read(fd1, str, 8);
-	// printf("%s\n", str);
-	// printf("each\n");
-	// for (size_t i = 0; i < 8; i++)
-	// {
-	// 	printf("%d\n", str[i]);
-	// }
-	
-	// printf("result %zd\n", result);
-	// // read(fd1, str, 3);
-	// // printf("%s\n", str);
-	// // read(fd2, str, 3);
-	// // printf("%s\n", str);
-	// // read(fd1, str, 3);
-	// // printf("%s\n", str);
-	// // read(fd2, str, 3);
-	// // printf("%s\n", str);
-	// // read(0, str, 5);
-	// // printf("%s\n", str);
-	// // read(fd1, str, 3);
-	// // printf("%s\n", str);
-	// // read(0, str, 5);
-	// // printf("%s\n", str);
-
-	// free(str);
-	// close(fd1);
-	// close(fd2);
-	// close(fd3);
-	char *str = (char *)malloc(0);
-	printf("%p\n", str);
+	printf("fd1\n");
+	getnext(fd1);
+	printf("fd1\n");
+	getnext(fd1);
+	printf("fd2\n");
+	getnext(fd2);
+	printf("fd1\n");
+	getnext(fd1);
+	printf("fd3\n");
+	getnext(fd3);
 	return (0);
 }
