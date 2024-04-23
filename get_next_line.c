@@ -6,11 +6,15 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 23:33:41 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/04/23 00:12:23 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/04/23 11:21:55 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+//基本的に構造体を使って進める　使えないなら二次元配列？
+//BUFFER_SIZEの大きさの文字列をmallocなしでつくれるのかどうか試す
+//構造体はfd 文字列 nextからなる
 
 void	*ft_calloc(size_t count, size_t size)
 {
