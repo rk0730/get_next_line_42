@@ -29,15 +29,21 @@
 // }
 
 # define TEST_BF 5
+# define MAX 1000000
 
 void	getnext(int fd)
 {
-	static char	*box;
-	//勝手にヌル埋めはしてくれないっぽい
-	printf("box[0] %c\n", box[0]);
-	printf("box[5] %c\n", box[4]);
-	read(fd, &box[fd * TEST_BF], TEST_BF);
-	printf("result %s\n", &box[fd * TEST_BF]);
+	//2098803000
+	static char	box[MAX / 50][TEST_BF + 1];
+	if (!(box[0][0]))
+		printf("null\n");
+	else
+		printf("notnull\n");
+	printf("boxの最初 %d\n", box[fd][0]);
+	// printf("box[5] %d\n", box[]);
+	int	result = read(fd, &box[fd][0], TEST_BF);
+	printf("result %d\n", result);
+	printf("result %s\n", &box[fd][0]);
 }
 
 
