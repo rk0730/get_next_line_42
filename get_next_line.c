@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 23:33:41 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/04/29 21:42:38 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/04/30 11:33:00 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	ft_gen_help(char *buf, char **ans_p, size_t *start_p, size_t *end_p)
 	return (0);
 }
 
-char	*ft_gen_ans(int fd, char *box[OPEN_MAX])
+char	*ft_gen_ans(int fd, char *box[OPEN_MAX + 1])
 {
 	size_t	start;
 	size_t	end;
