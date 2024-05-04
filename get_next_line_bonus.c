@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 11:43:47 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/05/04 11:43:49 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/05/04 17:19:55 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,8 @@ char	*ft_gen_ans_hb(char *box[OPEN_MAX + 1], int fd, char **ap, size_t *se)
 		if (read_r == -1)
 		{
 			free(*ap);
-			// ft_free_nullb(box);
 			free(box[fd]);
-			box[fd] = NULL;			
+			box[fd] = NULL;
 			return (NULL);
 		}
 		if (read_r == 0)

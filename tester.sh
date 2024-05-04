@@ -18,7 +18,7 @@ if [ ! -d "$tester1" ]; then
 	git clone https://github.com/Tripouille/gnlTester.git
 fi
 
-# make -C $tester1 m;
+make -C $tester1 m;
 make -C $tester1 b;
 
 if [ "$1" == "testclean" ]; then
