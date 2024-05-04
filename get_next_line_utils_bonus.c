@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 14:26:33 by rkitao            #+#    #+#             */
-/*   Updated: 2024/05/04 11:21:54 by kitaoryoma       ###   ########.fr       */
+/*   Created: 2024/05/04 11:39:12 by kitaoryoma        #+#    #+#             */
+/*   Updated: 2024/05/04 11:44:11 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-void	ft_free_null(char *box[OPEN_MAX + 1])
+void	ft_free_nullb(char *box[OPEN_MAX + 1])
 {
 	size_t	count;
 
@@ -25,7 +25,7 @@ void	ft_free_null(char *box[OPEN_MAX + 1])
 	}
 }
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlenb(const char *str)
 {
 	size_t	count;
 
@@ -37,7 +37,7 @@ size_t	ft_strlen(const char *str)
 	return (count);
 }
 
-int	ft_find_nl(char *str)
+int	ft_find_nlb(char *str)
 {
 	size_t	i;
 
@@ -51,7 +51,7 @@ int	ft_find_nl(char *str)
 	return (0);
 }
 
-void	ft_join_ans_h(char *new_ans, char *buf, size_t len, size_t *start_end)
+void	ft_join_ans_hb(char *new_ans, char *buf, size_t len, size_t *start_end)
 {
 	size_t	i;
 
@@ -66,13 +66,13 @@ void	ft_join_ans_h(char *new_ans, char *buf, size_t len, size_t *start_end)
 
 //old_ans_p, bufがnullであることはない
 //bufにある分をold_ans_pに繋げたnew_ansを返す、old_ans_pはfreeする、mallocミスがあればnullを返す
-char	*ft_join_ans(char **old_ans_p, char *buf, size_t *start_end)
+char	*ft_join_ansb(char **old_ans_p, char *buf, size_t *start_end)
 {
 	char	*new_ans;
 	size_t	i;
 	size_t	len;
 
-	len = ft_strlen(*old_ans_p);
+	len = ft_strlenb(*old_ans_p);
 	if (start_end[1] - start_end[0] == 0)
 		return (*old_ans_p);
 	new_ans = (char *)malloc(len + (start_end[1] - start_end[0]) + 1);
@@ -88,7 +88,7 @@ char	*ft_join_ans(char **old_ans_p, char *buf, size_t *start_end)
 		new_ans[i] = (*old_ans_p)[i];
 		i++;
 	}
-	ft_join_ans_h(new_ans, buf, len, start_end);
+	ft_join_ans_hb(new_ans, buf, len, start_end);
 	free(*old_ans_p);
 	return (new_ans);
 }
