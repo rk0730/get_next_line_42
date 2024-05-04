@@ -80,7 +80,10 @@ char	*ft_gen_ans(int fd, char *box[OPEN_MAX + 1])
 
 	ans = (char *)malloc(sizeof(char));
 	if (!ans)
+	{
+		ft_free_null(box);
 		return (NULL);
+	}
 	*ans = '\0';
 	result = ft_gen_help(box[fd], &ans, start_end);
 	if (result == 1)

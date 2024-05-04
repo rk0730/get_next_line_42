@@ -35,7 +35,9 @@ char	*ft_gen_ans_hb(char *box[OPEN_MAX + 1], int fd, char **ap, size_t *se)
 		if (read_r == -1)
 		{
 			free(*ap);
-			ft_free_nullb(box);
+			// ft_free_nullb(box);
+			free(box[fd]);
+			box[fd] = NULL;			
 			return (NULL);
 		}
 		if (read_r == 0)
@@ -80,7 +82,10 @@ char	*ft_gen_ansb(int fd, char *box[OPEN_MAX + 1])
 
 	ans = (char *)malloc(sizeof(char));
 	if (!ans)
+	{
+		ft_free_nullb(box);
 		return (NULL);
+	}
 	*ans = '\0';
 	result = ft_gen_helpb(box[fd], &ans, start_end);
 	if (result == 1)
