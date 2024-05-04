@@ -6,7 +6,7 @@
 /*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 23:33:41 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/05/04 16:43:38 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/05/04 17:19:17 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ char	*ft_gen_ans_h(char *box[OPEN_MAX + 1], int fd, char **ap, size_t *se)
 		}
 		if (ft_gen_help(box[fd], ap, se) == 1)
 		{
-			printf("free\n");
 			ft_free_null(box);
 			return (NULL);
 		}
@@ -61,10 +60,7 @@ int	ft_gen_help(char *buf, char **ans_p, size_t *start_end)
 	ft_count_word(buf, &(start_end[0]), &(start_end[1]));
 	*ans_p = ft_join_ans(ans_p, buf, start_end);
 	if (!(*ans_p))
-	{
-		printf("miss return");
 		return (1);
-	}
 	while (start_end[0] < start_end[1])
 	{
 		if (buf)
@@ -92,7 +88,6 @@ char	*ft_gen_ans(int fd, char *box[OPEN_MAX + 1])
 	result = ft_gen_help(box[fd], &ans, start_end);
 	if (result == 1)
 	{
-		printf("free\n");
 		ft_free_null(box);
 		return (NULL);
 	}
