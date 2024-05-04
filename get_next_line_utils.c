@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:26:33 by rkitao            #+#    #+#             */
-/*   Updated: 2024/05/04 11:21:54 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/05/04 16:43:54 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,15 @@ char	*ft_join_ans(char **old_ans_p, char *buf, size_t *start_end)
 	size_t	i;
 	size_t	len;
 
+	// printf("join start old %s\n", *old_ans_p);
 	len = ft_strlen(*old_ans_p);
 	if (start_end[1] - start_end[0] == 0)
 		return (*old_ans_p);
 	new_ans = (char *)malloc(len + (start_end[1] - start_end[0]) + 1);
+	// printf("malloc %p\n", new_ans);
 	if (!new_ans)
 	{
+		printf("malloc miss\n");
 		free(*old_ans_p);
 		*old_ans_p = NULL;
 		return (NULL);
@@ -90,5 +93,6 @@ char	*ft_join_ans(char **old_ans_p, char *buf, size_t *start_end)
 	}
 	ft_join_ans_h(new_ans, buf, len, start_end);
 	free(*old_ans_p);
+	// printf("join done new %s\n", new_ans);
 	return (new_ans);
 }
