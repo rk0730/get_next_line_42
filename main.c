@@ -1,4 +1,5 @@
-// cc -Wall -Wextra -Werror -D BUFFER_SIZE=5 get_next_line.c get_next_line_utils.c main.c -include get_next_line.h; ./a.out;
+// cc -Wall -Wextra -Werror -D BUFFER_SIZE=5 get_next_line.c get_next_line_utils.c main.c -include get_next_line.h
+// ./a.out
 
 #include "get_next_line.h"
 #include <fcntl.h>
