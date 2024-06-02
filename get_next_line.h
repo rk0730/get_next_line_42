@@ -6,7 +6,7 @@
 /*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 23:34:14 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/05/04 17:19:24 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:49:14 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2
+# endif
+
+# if BUFFER_SIZE == INT_MAX || BUFFER_SIZE < 0
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 0
 # endif
 
 char	*get_next_line(int fd);

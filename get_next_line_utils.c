@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:26:33 by rkitao            #+#    #+#             */
-/*   Updated: 2024/05/04 17:19:00 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/05/05 22:47:00 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ void	ft_join_ans_h(char *new_ans, char *buf, size_t len, size_t *start_end)
 	new_ans[len + (start_end[1] - start_end[0])] = '\0';
 }
 
-//old_ans_p, bufがnullであることはない
-//bufにある分をold_ans_pに繋げたnew_ansを返す、old_ans_pはfreeする、mallocミスがあればnullを返す
 char	*ft_join_ans(char **old_ans_p, char *buf, size_t *start_end)
 {
 	char	*new_ans;
