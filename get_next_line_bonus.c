@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 11:43:47 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/05/04 17:19:55 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/05/11 00:35:27 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,20 @@
 void	ft_count_wordb(char *str, size_t *start_p, size_t *end_p)
 {
 	*start_p = 0;
-	while (*start_p < BUFFER_SIZE && str[*start_p] == '\0')
+	while (*start_p < (size_t)BUFFER_SIZE && str[*start_p] == '\0')
 		*start_p = *start_p + 1;
 	*end_p = *start_p;
-	while (*end_p < BUFFER_SIZE && str[*end_p] != '\0' && str[*end_p] != '\n')
-		*end_p = *end_p + 1;
+	while (*end_p < (size_t)BUFFER_SIZE)
+	{
+		if (str[*end_p] != '\0' && str[*end_p] != '\n')
+			*end_p = *end_p + 1;
+		else
+			break ;
+	}
 	if (str[*end_p] == '\n')
 		*end_p = *end_p + 1;
 }
 
-//うまくいったらans 失敗したらnullを返す
 char	*ft_gen_ans_hb(char *box[OPEN_MAX + 1], int fd, char **ap, size_t *se)
 {
 	int	read_r;
@@ -54,8 +58,6 @@ char	*ft_gen_ans_hb(char *box[OPEN_MAX + 1], int fd, char **ap, size_t *se)
 	return (*ap);
 }
 
-//buf,ans_pがnullであることはない
-//ansを伸ばしたあとbufのstartからendまでを\0で埋めるmallocミスがあれば1を返し、うまくいけば0を返す
 int	ft_gen_helpb(char *buf, char **ans_p, size_t *start_end)
 {
 	ft_count_wordb(buf, &(start_end[0]), &(start_end[1]));
@@ -71,8 +73,6 @@ int	ft_gen_helpb(char *buf, char **ans_p, size_t *start_end)
 	return (0);
 }
 
-//box[fd]がnullであることはない。ansを作ってそれを返す
-//どこかでmallocミスがあった場合はnullを返す。
 char	*ft_gen_ansb(int fd, char *box[OPEN_MAX + 1])
 {
 	size_t	start_end[2];
@@ -95,15 +95,13 @@ char	*ft_gen_ansb(int fd, char *box[OPEN_MAX + 1])
 	return (ft_gen_ans_hb(box, fd, &ans, start_end));
 }
 
-//BUFFER_SIZEがsize_tを超えるとft_callocでエラー処理されるようになっているがこれでいいのか
-//BUFFER_SIZEにsizemaxが入るとBUFFER_SIZE + 1のcallocで失敗する
 char	*get_next_line(int fd)
 {
 	static char	*box[OPEN_MAX + 1];
 	char		*ans;
 	size_t		i;
 
-	if (fd < 0 || (size_t)BUFFER_SIZE == 0)
+	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (box[fd] == NULL)
 	{

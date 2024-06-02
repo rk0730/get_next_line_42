@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 11:39:12 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/05/04 11:44:11 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/05/05 22:46:54 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ void	ft_join_ans_hb(char *new_ans, char *buf, size_t len, size_t *start_end)
 	new_ans[len + (start_end[1] - start_end[0])] = '\0';
 }
 
-//old_ans_p, bufがnullであることはない
-//bufにある分をold_ans_pに繋げたnew_ansを返す、old_ans_pはfreeする、mallocミスがあればnullを返す
 char	*ft_join_ansb(char **old_ans_p, char *buf, size_t *start_end)
 {
 	char	*new_ans;
